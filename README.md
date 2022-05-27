@@ -9,14 +9,14 @@ By including our SDK, your app will check for updated translations in Devnagri r
 You can install the SDK manually.
 
 # Manual Installation
-Download the latest release from https://github.com/DevnagriAI/dota-sdk-ios/releases 
+Download the latest release from https://github.com/DevnagriAI/dev-ios-objc-sdk/releases 
 Add DevnagriSdkObjc.xcframework in Xcode as linked binary to your target.
 
 **Optional for development**
 
 The Apple store will reject your app if it includes simulator binaries. Therefore, a script to strip the extra binaries needs to be run before you upload the app. To do this, go to Build Phases and add a Run Script section by clicking the + symbol. Copy and paste the following script:
 
-      FRAMEWORK="DevnagriSDK"
+      FRAMEWORK="DevnagriSDKObjc"
       FRAMEWORK_EXECUTABLE_PATH="${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/$FRAMEWORK.framework/$FRAMEWORK"
       EXTRACTED_ARCHS=()
       for ARCH in $ARCHS
@@ -30,7 +30,13 @@ The Apple store will reject your app if it includes simulator binaries. Therefor
       mv "$FRAMEWORK_EXECUTABLE_PATH-merged" "$FRAMEWORK_EXECUTABLE_PATH"
 
 # Compatibility
-We support latest Xcode 13+ and Objective - C. This SDK requires base language as english. Other base language will not supported by this SDK
+We support latest Xcode 13+ and Objective C language. This SDK requires base language as english. Other base languages will not supported by this SDK. Minimum iOS Version supported is 13
+
+
+# Usage (Important)
+
+Select project target and click general select in framework,libraries,and Embedded Content and select *DevnagriSdkObjc.xcframework* if not selected 
+than choose **Embed -> Embed & Sign.**
 
 # Configuration
 
@@ -46,6 +52,7 @@ For auto update strings translations you can set time in minutes.
              [[DevnagriSdk shared] initSdk:@"API-KEY" updateStringsTime:10];
                  return YES;
       }
+    
      
 # Default Localisation Override
    The SDK override the functionality of NSLocalisedString by default. You just need to import the DevnagriSdk to the file where you want NSLocalisedString to be override by the SDK.
@@ -83,30 +90,21 @@ You can use these methods anywhere in your project and these will provide transl
 
     NSString *strSentence = @"My Home";
     [[DevnagriSdk shared] getTranslationOfStringWithSentence:strSentence callback:^(NSString * _Nonnull strTranslation) {
-        NSLog(@"Translation of Sentence %@ is %@",strSentence, strTranslation);
+          // Do your stuff here
     }];
 
 Get Translations of an Array of Strings.
 
     NSArray *arrSentences = [NSArray arrayWithObjects:@"My Home",@"Hello World", nil];
     [[DevnagriSdk shared] getTranslationOfStringsWithSentences:arrSentences callback:^(NSArray * _Nonnull arrTranslations) {
-        for (int i = 0; i < arrTranslations.count; i ++)
-        {
-            NSLog(@"Translation of array Sentences %@ is %@",[arrSentences objectAtIndex:i], [arrTranslations objectAtIndex:i]);
-        }
+        // Do your stuff here
      }];
 
 Get Translations Of Dictionary
 
     NSDictionary *dictSentences = [NSDictionary dictionaryWithObjectsAndKeys:@"My Home",@"my_home", @"Hello World",@"hello_world", nil];
     [[DevnagriSdk shared] getTranslationsOfDictionary:dictSentences callback:^(NSDictionary * _Nonnull dictTranslation) {
-        for (NSString *strKey in dictTranslation) {
-            NSLog(@"Translation of dict Sentences key =  %@ resp =  %@",strKey, [dictTranslation objectForKey:strKey]);
-        }
+        // Do your stuff here
     }];
 
-# Usage
-
-Select project target and click general select in framework,libraries,and Embedded Content and select *DevnagriSdkObjc.xcframework* if not selected 
-than choose **Embed -> Embed & Sign.**
 
