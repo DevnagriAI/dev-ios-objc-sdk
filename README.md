@@ -108,3 +108,11 @@ Get Translations Of Dictionary
     }];
 
 
+Get Translations Of Dictionary ignoring the key:
+
+    NSDictionary *dictSentences = [NSDictionary dictionaryWithObjectsAndKeys:@"My Home",@"my_home", @"Hello World",@"hello_world",@"1",@"status",@"1001",@"id", nil];
+    [[DevnagriSdk shared] getTranslationOfDictionary:dictSentences ignoreKeys:[NSArray arrayWithObjects:@"status",@"id",nil] callback:^(NSDictionary * _Nonnull   dictTranslation) {
+               // Update your views with translated data.
+      }];
+
+
