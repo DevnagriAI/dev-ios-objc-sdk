@@ -25,7 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getAllSupportableLanguagesCallback:(void (^)(NSArray *arrAllSupportingLang))callback;
 -(void)getTranslationOfStringWithSentence:(NSString *)sentence callback:(void (^)(NSString *strTranslation))callback;
 -(void)getTranslationOfStringsWithSentences:(NSArray *)sentences callback:(void (^)(NSArray *arrTranslations))callback;
--(void)getTranslationsOfDictionary:(NSDictionary *)dictionary callback:(void (^)(NSDictionary *dictTranslation))callback;
+//-(void)getTranslationsOfDictionary:(NSDictionary *)dictionary callback:(void (^)(NSDictionary *dictTranslation))callback;
+-(void)getTranslationOfDictionary:(NSDictionary *)dict ignoreKeys:(NSArray *)arrKeysToIgnore  callback:(void (^)(NSDictionary *dictTranslation))callback;
+
 @end
 
 NS_ASSUME_NONNULL_END
