@@ -8,6 +8,8 @@ By including our SDK, your app will check for updated translations in Devnagri r
 
 You can install the SDK manually.
 
+**Do note**: The language selection screen needs to be designed by the client. We only empower localisation of the app.
+
 # Manual Installation
 Download the latest release from https://github.com/DevnagriAI/dev-ios-objc-sdk/releases 
 Add DevnagriSdkObjc.xcframework in Xcode as linked binary to your target.
